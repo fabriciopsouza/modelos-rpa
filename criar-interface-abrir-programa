@@ -1,0 +1,38 @@
+#CRIAR INTERFACE ABRIR EXCEL WORD OU NOTEPAD
+
+#importa biblioteca autogui
+import pyautogui
+import pyautogui as escolha_opcao
+
+opcao = pyautogui.confirm('Clique no botao desejado', buttons = ['Excel', 'Word', 'Notepad'])
+
+if opcao == 'Excel':
+    escolha_opcao.sleep(1)
+    escolha_opcao.hotkey('win', 'r')
+    escolha_opcao.sleep(1)
+    escolha_opcao.typewrite('excel')
+    escolha_opcao.press('enter')
+    escolha_opcao.sleep(2)
+    escolha_opcao.moveTo(x=262, y=199)
+    escolha_opcao.click(x=262, y=199)
+    escolha_opcao.sleep(1)
+    escolha_opcao.typewrite('Escolhi abrir o excel.')
+    
+elif opcao == 'Word':
+    escolha_opcao.hotkey('win', 'r')
+    posicaoAbrirGoogle.sleep(2)
+    escolha_opcao.typewrite('winword')
+    escolha_opcao.press('enter')
+    escolha_opcao.sleep(2)
+    escolha_opcao.moveTo(x=271, y=203)
+    escolha_opcao.click(x=271, y=203)
+    escolha_opcao.sleep(1)
+    escolha_opcao.typewrite('Escolhi abrir o word.')
+    
+elif opcao == 'Notepad':
+    escolha_opcao.hotkey('win', 'r')
+    posicaoAbrirGoogle.sleep(2)
+    escolha_opcao.typewrite('notepad')
+    escolha_opcao.press('enter')
+    escolha_opcao.sleep(2)
+    escolha_opcao.typewrite('Escolhi abrir o notepad.')
