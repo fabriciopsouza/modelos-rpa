@@ -1,0 +1,53 @@
+#ABRIR E FECHAR NOTEPAD
+
+#importa biblioteca autogui
+import pyautogui as posicaoAbreArquivos
+
+#tempo de espera para o computador pensar
+posicaoAbrirGoogle.sleep(2)
+
+#hotkey permite executar mais de uma tecla de atalho.
+#A seguir executa pressionar windows + r
+posicaoAbreArquivos.hotkey('win', 'r')
+
+#tempo de espera para o computador pensar
+posicaoAbrirGoogle.sleep(2)
+
+#digita nome do programa
+posicaoAbreArquivos.typewrite('notepad')
+
+#tempo de espera para o computador pensar
+posicaoAbrirGoogle.sleep(2)
+
+#Apertar enter
+posicaoAbrirGoogle.press('enter')
+
+#tempo de espera para o computador pensar
+posicaoAbrirGoogle.sleep(2)
+
+#digita nome do programa
+posicaoAbreArquivos.typewrite('Abrimos o note pad com um robo ou script.')
+
+#tempo de espera para o computador pensar
+posicaoAbrirGoogle.sleep(2)
+
+#getActiveWindow permite capturar janela ativa
+fecharJanelaNotepad = posicaoAbreArquivos.getActiveWindow()
+
+#tempo de espera para o computador pensar
+posicaoAbrirGoogle.sleep(2)
+
+#fecha a janela ativa
+fecharJanelaNotepad.close()
+
+#tempo de espera para o computador pensar
+posicaoAbrirGoogle.sleep(2)
+
+#tabula para opcao NAO SALVAR
+posicaoAbrirGoogle.press('tab')
+
+#tempo de espera para o computador pensar
+posicaoAbrirGoogle.sleep(2)
+
+#Apertar enter
+posicaoAbrirGoogle.press('enter')
