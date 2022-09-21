@@ -1,4 +1,7 @@
-#ABRIR GOOGLE CHROME E CONSULTAR O VALOR DO DOLAR em resolucao 2k no google chrome
+#ABRIR GOOGLE CHROME E CONSULTAR O VALOR DO DOLAR EM RESOLUCAO 2K NO GOOGLE CHROME
+
+#install pyautogui
+!pip install pyautogui
 
 #importa biblioteca autogui
 import pyautogui as posicaoAbrirGoogle
