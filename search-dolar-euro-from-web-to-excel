@@ -1,0 +1,113 @@
+#importamos o selenium para trabalhar com as paginas da web
+from selenium import webdriver as opcoes_selenium_aula
+from selenium.webdriver.common.keys import Keys
+
+#importando a biblioteca do pyautogui para trabalhar com o tempo e teclas teclado
+import pyautogui as tempoPausaComputador
+
+import pyautogui as teclasAtalho
+
+#Usando o By para trabalhar com as atualizações mais recentes
+from selenium.webdriver.common.by import By
+
+#PESQUISA DOLAR
+
+#Passamos autorizacao ao acesso as configuracoes do chrome
+meuNavegador = opcoes_selenium_aula.Chrome()
+meuNavegador.get('https://www.google.com.br/')
+
+#Aguarda tempo para processar informações
+tempoPausaComputador.sleep(3)
+
+#abrir google, clicar botao direito, inspecionar, [primeira setinha, clica dentro da caixa ](2x), acha name = '' ou id = '' ou copiar xpath
+
+#procurando pela caixa de pesquisa google e digitando dolar hoje
+meuNavegador.find_element(By.NAME, 'q').send_keys('Dolar hoje')
+
+#Aguarda tempo para processar informações
+tempoPausaComputador.sleep(1)
+
+#retorna para o campo name q e da enter fazendo a pesquisa
+meuNavegador.find_element(By.NAME, 'q').send_keys(Keys.RETURN)
+
+#Aguarda tempo para processar informações
+tempoPausaComputador.sleep(1)
+
+#abrir google, clicar botao direito, inspecionar, [primeira setinha, clica dentro da caixa ](2x), acha name = '' ou id = '' ou copiar xpath do valor dolar
+#como e uma lista, pegamos o primeiro elemento da lista [0]
+valorDolar = meuNavegador.find_elements(By.XPATH, '//*[@id="knowledge-currency__updatable-data-column"]/div[1]/div[2]/span[1]')[0].text
+
+print(valorDolar)
+
+# ----------------------------------------------------------------------------------
+#PESQUISA EURO
+
+#Aguarda tempo para processar informações
+tempoPausaComputador.sleep(2)
+
+#retorna para o campo name q
+meuNavegador.find_element(By.NAME, 'q').send_keys('')
+
+#Aguarda tempo para processar informações
+tempoPausaComputador.sleep(2)
+
+teclasAtalho.press('tab')
+
+tempoPausaComputador.sleep(2)
+
+teclasAtalho.press('enter')
+
+tempoPausaComputador.sleep(2)
+
+#retorna para o campo name q
+meuNavegador.find_element(By.NAME, 'q').send_keys('euro')
+
+tempoPausaComputador.sleep(2)
+
+#retorna para o campo name q e da enter fazendo a pesquisa
+meuNavegador.find_element(By.NAME, 'q').send_keys(Keys.RETURN)
+
+#Aguarda tempo para processar informações
+tempoPausaComputador.sleep(1)
+
+#abrir google, clicar botao direito, inspecionar, [primeira setinha, clica dentro da caixa ](2x), acha name = '' ou id = '' ou copiar xpath do valor dolar
+#como e uma lista, pegamos o primeiro elemento da lista [0]
+valorEuro = meuNavegador.find_elements(By.XPATH, '//*[@id="knowledge-currency__updatable-data-column"]/div[1]/div[2]/span[1]')[0].text
+
+print(valorEuro)
+
+# ----------------------------------------------------------------------------------
+
+#TRABALHANDO COM EXCEL
+
+#importando biblioteca xlsx
+import xlsxwriter
+import os
+
+caminhoArquivo = 'D:\\Documentos\\!_Python\\UDEMY - CURSO RPA PYTHON\\Extraindo valor dolar euro salvando excel\\Dolar e Euro Google.xlsx'
+planilhaCriada = xlsxwriter.Workbook(caminhoArquivo)
+planilha1 = planilhaCriada.add_worksheet()
+
+#Escrevendo nas células
+planilha1.write('A1', 'Dolar')
+planilha1.write('B1', 'Euro')
+planilha1.write('A2', valorDolar)
+planilha1.write('B2', valorEuro)
+
+#Substituir virgula por ponto
+valorDolar = valorDolar.replace(',', '.')
+valorEuro = valorEuro.replace(',', '.')
+
+#Alterando tipo de str para float
+valorDolarFloat = float(valorDolar)
+valorEuroFloat = float(valorEuro)
+
+#Escrevendo nas células o valor float
+planilha1.write('A3', valorDolar)
+planilha1.write('B3', valorEuro)
+
+#Fechando o arquivo do excel que esta em segundo plano
+planilhaCriada.close()
+
+#Abre o arquivo
+os.startfile(caminhoArquivo)
